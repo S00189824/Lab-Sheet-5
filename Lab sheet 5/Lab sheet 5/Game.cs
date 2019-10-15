@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace Lab_sheet_5
 {
-    class Game
+    public class Game
     {
-        string name { get; set; }
-        decimal price { get; set; }
-        DateTime ReleaseDate { get; set; }
+        private readonly string _name;
+        
+        public string name
+        {
+            get
+            {
+                return _name;// getting name but because its private you can now only 
+                //get name and not set it.
+            }
+        }
+
+        public decimal price { get; set; }
+       public  DateTime ReleaseDate { get; set; }
 
         public Game (string Name,decimal Price,DateTime releaseDate)
         {
-            name = Name;
+            _name = Name;
             price = Price;
             ReleaseDate = releaseDate;
 
@@ -26,6 +36,16 @@ namespace Lab_sheet_5
         public Game(string name):this(name, 0)
         {
 
+        }
+
+        public Game()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"{_name} {price} {PegiRating} {ReleaseDate.ToShortDateString()}");
         }
     }
 }
