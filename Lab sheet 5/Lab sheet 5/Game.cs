@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_sheet_5
 {
-    public class Game
+    public abstract class Game
     {
         private readonly string _name;
         
@@ -19,7 +19,7 @@ namespace Lab_sheet_5
             }
         }
 
-        public decimal price { get; set; }
+       protected decimal price { get; set; } //protected will allow me to use in child class computerGameClass
        public  DateTime ReleaseDate { get; set; }
 
         public Game (string Name,decimal Price,DateTime releaseDate)
@@ -27,6 +27,7 @@ namespace Lab_sheet_5
             _name = Name;
             price = Price;
             ReleaseDate = releaseDate;
+            
 
 
         }
@@ -45,7 +46,13 @@ namespace Lab_sheet_5
 
         public override string ToString()
         {
-            return string.Format($"{_name} {price} {PegiRating} {ReleaseDate.ToShortDateString()}");
+            return string.Format($"{_name} {price}  {ReleaseDate.ToShortDateString() }");
         }
+
+        public abstract void UpdatePrice(decimal percentageIncrease);
+        //{
+        //    price *= (1 + percentageIncrease);
+        //}
+
     }
 }
